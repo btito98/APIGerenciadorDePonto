@@ -2,11 +2,11 @@
 {
     public class Empresa
     {
-        Guid Id { get; set; }
-        string razaoSocial { get; set; }
-        string CNPJ { get; set; }
-        string Email { get; set; }
-        Endereco idEndereco { get; set; }
+        public Guid Id { get; set; }
+        public string razaoSocial { get; set; }
+        public string CNPJ { get; set; }
+        public string Email { get; set; }
+        public Endereco idEndereco { get; set; }
 
     }
 }

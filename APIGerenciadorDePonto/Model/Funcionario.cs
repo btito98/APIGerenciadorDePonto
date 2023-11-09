@@ -2,15 +2,15 @@
 {
     public class Funcionario
     {
-        Guid Id { get; set; }
-        string Nome { get; set; }
-        DateTime dataNascimento { get; set; }
-        string CPF { get; set; }
-        string Email { get; set; }
-        int cargaHoraria { get; set; }        
-        Perfil tipoPerfil { get; set; }
-        Endereco idEndereco { get; set; }
-        Empresa idEmpresa { get; set; }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public DateTime dataNascimento { get; set; }
+        public string CPF { get; set; }
+        public string Email { get; set; }
+        public int cargaHoraria { get; set; }
+        public Perfil tipoPerfil { get; set; }
+        public Endereco idEndereco { get; set; }
+        public Empresa idEmpresa { get; set; }
 
     }
 }

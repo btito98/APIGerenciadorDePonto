@@ -2,10 +2,10 @@
 {
     public class Perfil
     {
-        Guid Id { get; set; }
-        string Nome { get; set; }
-        string Descricao { get; set; }
-        DateTime dataRegistro { get; set; }
-        Empresa idEmpresa { get; set; } 
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public DateTime dataRegistro { get; set; }
+        public Empresa idEmpresa { get; set; } 
     }
 }

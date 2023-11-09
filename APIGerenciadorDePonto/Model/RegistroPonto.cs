@@ -2,10 +2,10 @@
 {
     public class RegistroPonto
     {
-        Guid Id { get; set; }
-        DateTime dataHoraEntrada { get; set; }
-        DateTime dataHoraSaida { get; set; }
-        Funcionario idFuncionario { get; set; }
-        Empresa idEmpresa { get; set; }
+        public Guid Id { get; set; }
+        public DateTime dataHoraEntrada { get; set; }
+        public DateTime dataHoraSaida { get; set; }
+        public Funcionario idFuncionario { get; set; }
+        public Empresa idEmpresa { get; set; }
     }
 }
