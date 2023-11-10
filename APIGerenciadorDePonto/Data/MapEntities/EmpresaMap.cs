@@ -12,8 +12,7 @@ namespace APIGerenciadorDePonto.Data.MapEntities
             builder.Property(e => e.razaoSocial).IsRequired();
             builder.Property(e => e.CNPJ).IsRequired();                
             builder.Property(e => e.Email).IsRequired();
-            builder.HasOne(e => e.idEndereco).WithOne().HasPrincipalKey<Endereco>(e => e.Id).HasForeignKey<Empresa>(e => e.idEndereco);           
-                
+            builder.HasMany(e => e.Funcionarios).WithOne(f => f.Empresa);
         }
     }
 }

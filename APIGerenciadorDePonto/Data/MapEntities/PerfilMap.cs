@@ -12,8 +12,7 @@ namespace APIGerenciadorDePonto.Data.MapEntities
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Nome).IsRequired();
             builder.Property(p => p.Descricao).IsRequired();
-            builder.HasOne(p => p.idEmpresa).WithOne().HasPrincipalKey<Empresa>(e => e.Id).HasForeignKey<Perfil>(p => p.idEmpresa);
-
+            builder.Property(p => p.dataRegistro).IsRequired();
         }
     }
 }

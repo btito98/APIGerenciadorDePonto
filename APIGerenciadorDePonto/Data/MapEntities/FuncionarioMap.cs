@@ -14,9 +14,8 @@ namespace APIGerenciadorDePonto.Data.MapEntities
             builder.Property(f => f.CPF).IsRequired();
             builder.Property(f => f.Email).IsRequired();
             builder.Property(f => f.cargaHoraria).IsRequired();
-            builder.HasOne(f => f.tipoPerfil).WithOne().HasPrincipalKey<Perfil>(p => p.Id).HasForeignKey<Funcionario>(f => f.tipoPerfil);
-            builder.HasOne(f => f.idEndereco).WithOne().HasPrincipalKey<Endereco>(e => e.Id).HasForeignKey<Funcionario>(f => f.idEndereco);
-            builder.HasOne (f => f.idEmpresa).WithOne().HasPrincipalKey<Empresa>(e => e.Id).HasForeignKey<Funcionario>(f => f.idEmpresa);
+            builder.HasOne(f => f.Perfil).WithMany().HasForeignKey(f => f.FKPerfil);
+            builder.HasOne(f => f.Empresa).WithMany().HasForeignKey(f => f.FKEmpresa);
         }
     }
 }
