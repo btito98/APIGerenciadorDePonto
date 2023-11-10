@@ -2,14 +2,14 @@
 using APIGerenciadorDePonto.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIGerenciadorDePonto
+namespace APIGerenciadorDePonto.Data
 {
     public class AppDbContext : DbContext
     {
         public AppDbContext()
-        {                
+        {
         }
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
@@ -21,7 +21,7 @@ namespace APIGerenciadorDePonto
             modelBuilder.ApplyConfiguration(new EmpresaMap());
             modelBuilder.ApplyConfiguration(new RegistroPontoMap());
             modelBuilder.ApplyConfiguration(new PerfilMap());
-            base.OnModelCreating(modelBuilder);            
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
