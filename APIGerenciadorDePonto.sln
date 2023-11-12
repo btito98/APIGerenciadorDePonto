@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDePonto.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDePonto.Shared", "GerenciadorDePonto.Shared\GerenciadorDePonto.Shared.csproj", "{61B42F89-C8E6-4079-A823-026859C25366}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrenciadorDePonto.Application", "GrenciadorDePonto.Application\GrenciadorDePonto.Application.csproj", "{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{61B42F89-C8E6-4079-A823-026859C25366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61B42F89-C8E6-4079-A823-026859C25366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61B42F89-C8E6-4079-A823-026859C25366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

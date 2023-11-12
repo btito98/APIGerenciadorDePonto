@@ -1,7 +1,12 @@
 ﻿using GerenciadorDePonto.Infrastructure;
+using GerenciadorDePonto.Infrastructure.Repositories;
+using GrenciadorDePonto.Application.Interfaces;
+using GrenciadorDePonto.Application.Mappings;
+using GrenciadorDePonto.Application.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +23,14 @@ namespace GerenciadorDePonto.Shared.IoC
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IEmpresaService, EmpresaService>();
+
+
+
+            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMapping));
         }   
     }
 }
