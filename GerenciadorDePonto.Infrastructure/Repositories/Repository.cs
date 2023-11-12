@@ -36,9 +36,16 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.Set<T>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Task UpdateAsync(T entity)

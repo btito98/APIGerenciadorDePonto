@@ -32,7 +32,8 @@ namespace GrenciadorDePonto.Application.Service
 
         public Task<IEnumerable<EmpresaDTO>> GetAllEmpresas()
         {
-            throw new NotImplementedException();
+            var empresas = _empresaRepository.GetAllAsync();
+            return _mapper.Map<Task<IEnumerable<EmpresaDTO>>>(empresas);
         }
 
         public Task<EmpresaDTO> GetEmpresaById(Guid? id)
