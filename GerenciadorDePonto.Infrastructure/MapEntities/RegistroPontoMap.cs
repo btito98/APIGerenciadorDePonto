@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace APIGerenciadorDePonto.Data.MapEntities
+namespace GerenciadorDePonto.Infrastructure.MapEntities
 {
     public class RegistroPontoMap : IEntityTypeConfiguration<RegistroPonto>
     {

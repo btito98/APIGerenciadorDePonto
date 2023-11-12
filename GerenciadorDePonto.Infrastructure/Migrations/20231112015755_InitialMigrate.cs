@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace APIGerenciadorDePonto.Migrations
+namespace GerenciadorDePonto.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class InitialMigrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,25 +26,7 @@ namespace APIGerenciadorDePonto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "enderecos",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Rua = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complemento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Numero = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Bairro = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CEP = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_enderecos", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "perfils",
+                name: "Perfils",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -54,7 +36,7 @@ namespace APIGerenciadorDePonto.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_perfils", x => x.Id);
+                    table.PrimaryKey("PK_Perfils", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,7 +46,9 @@ namespace APIGerenciadorDePonto.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     dataHoraEntrada = table.Column<DateTime>(type: "datetime2", nullable: false),
                     dataHoraSaida = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FKFuncionario = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    FKFuncionario = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Latitude = table.Column<double>(type: "float", nullable: false),
+                    Logintude = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,9 +78,9 @@ namespace APIGerenciadorDePonto.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Funcionarios_perfils_FKPerfil",
+                        name: "FK_Funcionarios_Perfils_FKPerfil",
                         column: x => x.FKPerfil,
-                        principalTable: "perfils",
+                        principalTable: "Perfils",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -116,9 +100,6 @@ namespace APIGerenciadorDePonto.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "enderecos");
-
-            migrationBuilder.DropTable(
                 name: "Funcionarios");
 
             migrationBuilder.DropTable(
@@ -128,7 +109,7 @@ namespace APIGerenciadorDePonto.Migrations
                 name: "Empresas");
 
             migrationBuilder.DropTable(
-                name: "perfils");
+                name: "Perfils");
         }
     }
 }

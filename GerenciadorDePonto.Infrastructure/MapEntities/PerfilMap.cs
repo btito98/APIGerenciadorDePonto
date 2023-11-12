@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace APIGerenciadorDePonto.Data.MapEntities
+namespace GerenciadorDePonto.Infrastructure.MapEntities
 {
     public class PerfilMap : IEntityTypeConfiguration<Perfil>
     {
         public void Configure(EntityTypeBuilder<Perfil> builder)
         {
-            //mapeie todas as entidades
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Nome).IsRequired();
             builder.Property(p => p.Descricao).IsRequired();
