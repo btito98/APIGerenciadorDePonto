@@ -19,7 +19,7 @@ namespace GernciadorDePontoAPI.Controllers
         {
             try
             {
-                var empresas = await _empresaService.GetAllEmpresas();
+                var empresas =  _empresaService.GetAll();
                 if (empresas == null) return NotFound();
                 return Ok(empresas);
             }
@@ -29,19 +29,19 @@ namespace GernciadorDePontoAPI.Controllers
             }
         }
 
-        [HttpPost("AdicionarEmpresa")]
-        public async Task<ActionResult> Post([FromBody] EmpresaDTO empresaDTO)
-        {
-            try
-            {
-                await _empresaService.AddEmpresa(empresaDTO);
-                return Ok("Empresa cadastrada com sucesso");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpPost("AdicionarEmpresa")]
+        //public async Task<ActionResult> Post([FromBody] EmpresaDTO empresaDTO)
+        //{
+        //    try
+        //    {
+        //        await _empresaService.AddEmpresa(empresaDTO);
+        //        return Ok("Empresa cadastrada com sucesso");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
 
 

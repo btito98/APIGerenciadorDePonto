@@ -26,7 +26,9 @@ namespace GerenciadorDePonto.Shared.IoC
 
             services.AddScoped<IEmpresaService, EmpresaService>();
 
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+            services.AddScoped(typeof(IServiceAsync<,>), typeof(ServiceAsync<,>));
 
             services.AddScoped<IEmpresaRepository, EmpresaRepository>();
 

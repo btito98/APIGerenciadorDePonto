@@ -13,9 +13,11 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
     public class Repository<T> : IRepository<T> where T : class
     {
         protected AppDbContext _context;
+        protected DbSet<T> _table;
         public Repository(AppDbContext context)
         {
             _context = context;
+            _table = _context.Set<T>();
         }
 
         public async Task AddAsync(T entity)
@@ -31,16 +33,12 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
             }
         }
 
-        public Task DeleteAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<T>> GetAllAsync()
+        public async Task DeleteAsync(T entity)
         {
             try
             {
-                return await _context.Set<T>().ToListAsync();
+                _table.Remove(entity);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -48,9 +46,43 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
             }
         }
 
-        public Task UpdateAsync(T entity)
+        public IQueryable<T> GetAllAsync(Expression<Func<T, bool>> expression = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _context.Set<T>().AsNoTracking();
+                if (expression != null)
+                    result = result.Where(expression);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<T> GetByIdAsync(Guid? id)
+        {
+            try
+            {
+                return await _table.FindAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task UpdateAsync(T entity)
+        {
+            try
+            {
+                _table.Update(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

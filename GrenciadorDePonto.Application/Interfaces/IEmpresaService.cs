@@ -1,4 +1,5 @@
-﻿using GrenciadorDePonto.Application.DTOs;
+﻿using APIGerenciadorDePonto.Model;
+using GrenciadorDePonto.Application.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace GrenciadorDePonto.Application.Interfaces
 {
-    public interface IEmpresaService
+    public interface IEmpresaService : IServiceAsync<Empresa, EmpresaDTO>
     {
-        Task<IEnumerable<EmpresaDTO>> GetAllEmpresas();
-        Task<EmpresaDTO> GetEmpresaById(Guid? id);
-        Task AddEmpresa(EmpresaDTO empresaDTO);
-        Task UpdateEmpresa(EmpresaDTO empresaDTO);
-        Task DeleteEmpresa(Guid? id);
+        
     }
 }
