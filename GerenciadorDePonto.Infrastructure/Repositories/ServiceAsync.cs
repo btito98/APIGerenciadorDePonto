@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GerenciadorDePonto.Domain.Model;
 using GrenciadorDePonto.Application.DTOs;
 using GrenciadorDePonto.Application.Interfaces;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace GerenciadorDePonto.Infrastructure.Repositories
 {
     public class ServiceAsync<TEntity, TDto> : IServiceAsync<TEntity, TDto>
-        where TDto : EntityDto where TEntity : class
+        where TDto : EntityDto where TEntity : Entity
     {
         private readonly IRepository<TEntity> _repository;
         private readonly IMapper _mapper;
@@ -30,7 +31,8 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
 
         public async Task DeleteAsync(Guid? id)
         {
-            await _repository.DeleteAsync(await _repository.GetByIdAsync(id));
+            var entity = _repository.GetByIdAsync(id);
+            await _repository.DeleteAsync(entity.Result);
         }
 
         public IEnumerable<TDto> GetAll(Expression<Func<TDto, bool>> expression = null)
@@ -45,10 +47,10 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
             return _mapper.Map<TDto>(entity);
         }
 
-        public async Task UpdateAsync(TDto tDto)
+        public async Task UpdateAsync(Guid id, TDto tDto)
         {
             var entity = _mapper.Map<TEntity>(tDto);
-            await _repository.UpdateAsync(entity);
+            await _repository.UpdateAsync(id,entity);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GernciadorDePontoAPI.Controllers
     [ApiController]
     public class EmpresaController : ControllerBase
     {
-        private readonly IServiceAsync<Empresa, EmpresaDTO> _empresaService;
+        private readonly IEmpresaService _empresaService;
         public EmpresaController(IEmpresaService empresaService)
         {
             _empresaService = empresaService;
@@ -44,6 +44,48 @@ namespace GernciadorDePontoAPI.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetById(Guid id)
+        {
+            try
+            {
+                var empresa = await _empresaService.GetByIdAsync(id);
+                if (empresa == null) return NotFound();
+                return Ok(empresa);
+            }
+            catch (System.Exception)
+            {
+                return BadRequest("Erro ao obter empresa");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(Guid id, [FromBody]EmpresaDTO empresaDTO)
+        {
+            try
+            {
+                await _empresaService.UpdateAsync(id, empresaDTO);
+                return Ok("Empresa atualizada com sucesso");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _empresaService.DeleteAsync(id);
+                return Ok("Empresa excluída com sucesso");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
 

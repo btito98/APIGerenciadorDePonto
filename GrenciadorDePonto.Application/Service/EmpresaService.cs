@@ -28,24 +28,29 @@ namespace GrenciadorDePonto.Application.Service
             return empresasDTO;
         }
 
-        public Task<EmpresaDTO> GetByIdAsync(Guid? id)
+        public async Task<EmpresaDTO> GetByIdAsync(Guid? id)
         {
-            throw new NotImplementedException();
+            var empresa = await _empresaRepository.GetByIdAsync(id);
+            return _mapper.Map<EmpresaDTO>(empresa);
         }
 
-        public Task AddAsync(EmpresaDTO tDto)
+        public async Task AddAsync(EmpresaDTO tDto)
         {
-            throw new NotImplementedException();
+            var empresa = _mapper.Map<Empresa>(tDto);
+            await _empresaRepository.AddAsync(empresa);
         }
 
-        public Task UpdateAsync(EmpresaDTO tDto)
+        public async Task UpdateAsync(Guid id, EmpresaDTO tDto)
         {
-            throw new NotImplementedException();
+            tDto.Id = id;
+            var empresa = _mapper.Map<Empresa>(tDto);
+            await _empresaRepository.UpdateAsync(id, empresa);
         }
 
-        public Task DeleteAsync(Guid? id)
+        public async Task DeleteAsync(Guid? id)
         {
-            throw new NotImplementedException();
+            var empresa = _empresaRepository.GetByIdAsync(id);
+            await _empresaRepository.DeleteAsync(empresa.Result); 
         }
     }
 }

@@ -12,7 +12,7 @@ namespace GrenciadorDePonto.Application.Interfaces
         IEnumerable<TDto> GetAll(Expression<Func<TDto, bool>> expression = null);
         Task<TDto> GetByIdAsync(Guid? id);
         Task AddAsync(TDto tDto);
-        Task UpdateAsync(TDto tDto);
+        Task UpdateAsync(Guid id, TDto tDto);
         Task DeleteAsync(Guid? id);
     }
 }

@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using GerenciadorDePonto.Domain.Model;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APIGerenciadorDePonto.Model
 {
-    public class Empresa
+    public class Empresa : Entity
     {
-        public Guid Id { get; set; }
         public string razaoSocial { get; set; }
         public string CNPJ { get; set; }
         public string Email { get; set; }

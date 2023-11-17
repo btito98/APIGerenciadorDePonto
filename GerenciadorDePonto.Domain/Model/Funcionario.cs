@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GerenciadorDePonto.Domain.Model;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APIGerenciadorDePonto.Model
 {
-    public class Funcionario
+    public class Funcionario : Entity
     {
-        [Key]
-        public Guid Id { get; set; }
         public string Nome { get; set; }
         public DateTime dataNascimento { get; set; }
         public string CPF { get; set; }

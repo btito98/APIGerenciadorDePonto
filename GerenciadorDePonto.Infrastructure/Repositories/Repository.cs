@@ -1,4 +1,5 @@
-﻿using GrenciadorDePonto.Application.Interfaces;
+﻿using GerenciadorDePonto.Domain.Model;
+using GrenciadorDePonto.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDePonto.Infrastructure.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         protected AppDbContext _context;
         protected DbSet<T> _table;
@@ -65,14 +66,15 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
         {
             try
             {
-                return await _table.FindAsync(id);
+                return await _table.FirstOrDefaultAsync(x => x.Id == id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public async Task UpdateAsync(T entity)
+
+        public async Task UpdateAsync(Guid id, T entity)
         {
             try
             {
@@ -83,6 +85,6 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }   
     }
 }

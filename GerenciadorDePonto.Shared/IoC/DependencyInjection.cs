@@ -32,7 +32,8 @@ namespace GerenciadorDePonto.Shared.IoC
 
             services.AddScoped<IEmpresaRepository, EmpresaRepository>();
 
-            services.AddAutoMapper(typeof(DomainToDTOMapping));
-        }   
+            services.AddAutoMapper(typeof(DomainToDTOMapping).Assembly);
+
+        }
     }
 }

@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using GerenciadorDePonto.Domain.Model;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APIGerenciadorDePonto.Model
 {
-    public class RegistroPonto
+    public class RegistroPonto : Entity
     {
-
-        public Guid Id { get; set; }
         public DateTime dataHoraEntrada { get; set; }
         public DateTime dataHoraSaida { get; set; }
         [ForeignKey("Funcionario")]
