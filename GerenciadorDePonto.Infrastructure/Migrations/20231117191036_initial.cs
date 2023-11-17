@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GerenciadorDePonto.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrate : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,20 +26,6 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Perfils",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    dataRegistro = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Perfils", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RegistrosPonto",
                 columns: table => new
                 {
@@ -53,6 +39,27 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RegistrosPonto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Perfils",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dataRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FKEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpresaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Perfils", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Perfils_Empresas_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresas",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -94,6 +101,11 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                 name: "IX_Funcionarios_FKPerfil",
                 table: "Funcionarios",
                 column: "FKPerfil");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Perfils_EmpresaId",
+                table: "Perfils",
+                column: "EmpresaId");
         }
 
         /// <inheritdoc />
@@ -106,10 +118,10 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                 name: "RegistrosPonto");
 
             migrationBuilder.DropTable(
-                name: "Empresas");
+                name: "Perfils");
 
             migrationBuilder.DropTable(
-                name: "Perfils");
+                name: "Empresas");
         }
     }
 }

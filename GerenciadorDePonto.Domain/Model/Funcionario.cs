@@ -11,9 +11,7 @@ namespace APIGerenciadorDePonto.Model
         public string CPF { get; set; }
         public string Email { get; set; }
         public int cargaHoraria { get; set; }
-        [ForeignKey("Perfil")]
-        public Guid FKPerfil { get; set; }      
-        [ForeignKey("Empresa")]
+        public Guid FKPerfil { get; set; }
         public Guid FKEmpresa { get; set; }
         public virtual Perfil Perfil { get; set; }
         public virtual Empresa Empresa { get; set; }

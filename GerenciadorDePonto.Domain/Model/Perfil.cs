@@ -8,5 +8,6 @@ namespace APIGerenciadorDePonto.Model
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public DateTime dataRegistro { get; set; }
+        public Guid FKEmpresa { get; set; }
     }
 }

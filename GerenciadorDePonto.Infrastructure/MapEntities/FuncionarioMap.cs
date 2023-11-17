@@ -16,6 +16,7 @@ namespace GerenciadorDePonto.Infrastructure.MapEntities
             builder.Property(f => f.cargaHoraria).IsRequired();
             builder.HasOne(f => f.Perfil).WithMany().HasForeignKey(f => f.FKPerfil);
             builder.HasOne(f => f.Empresa).WithMany().HasForeignKey(f => f.FKEmpresa);
+
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDePonto.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231112015755_InitialMigrate")]
-    partial class InitialMigrate
+    [Migration("20231117191036_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,6 +97,12 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FKEmpresa")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -105,6 +111,8 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
 
                     b.ToTable("Perfils");
                 });
@@ -124,10 +132,12 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                     b.Property<double>("Logintude")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("dataHoraEntrada")
+                    b.Property<DateTime?>("dataHoraEntrada")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("dataHoraSaida")
+                    b.Property<DateTime?>("dataHoraSaida")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -154,9 +164,18 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                     b.Navigation("Perfil");
                 });
 
+            modelBuilder.Entity("APIGerenciadorDePonto.Model.Perfil", b =>
+                {
+                    b.HasOne("APIGerenciadorDePonto.Model.Empresa", null)
+                        .WithMany("Perfis")
+                        .HasForeignKey("EmpresaId");
+                });
+
             modelBuilder.Entity("APIGerenciadorDePonto.Model.Empresa", b =>
                 {
                     b.Navigation("Funcionarios");
+
+                    b.Navigation("Perfis");
                 });
 #pragma warning restore 612, 618
         }

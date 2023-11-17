@@ -12,7 +12,7 @@ namespace GerenciadorDePonto.Infrastructure.MapEntities
             builder.Property(e => e.razaoSocial).IsRequired();
             builder.Property(e => e.CNPJ).IsRequired();
             builder.Property(e => e.Email).IsRequired();
-            builder.HasMany(e => e.Funcionarios).WithOne(f => f.Empresa);
+            builder.HasMany(e => e.Funcionarios).WithOne(f => f.Empresa).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

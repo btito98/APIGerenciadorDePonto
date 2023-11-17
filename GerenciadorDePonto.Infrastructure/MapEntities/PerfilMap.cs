@@ -12,6 +12,7 @@ namespace GerenciadorDePonto.Infrastructure.MapEntities
             builder.Property(p => p.Nome).IsRequired();
             builder.Property(p => p.Descricao).IsRequired();
             builder.Property(p => p.dataRegistro).IsRequired();
+            builder.Property(p => p.FKEmpresa).IsRequired();
         }
     }
 }

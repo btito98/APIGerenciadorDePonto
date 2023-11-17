@@ -94,6 +94,12 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FKEmpresa")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -102,6 +108,8 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
 
                     b.ToTable("Perfils");
                 });
@@ -121,10 +129,12 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                     b.Property<double>("Logintude")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("dataHoraEntrada")
+                    b.Property<DateTime?>("dataHoraEntrada")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("dataHoraSaida")
+                    b.Property<DateTime?>("dataHoraSaida")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -151,9 +161,18 @@ namespace GerenciadorDePonto.Infrastructure.Migrations
                     b.Navigation("Perfil");
                 });
 
+            modelBuilder.Entity("APIGerenciadorDePonto.Model.Perfil", b =>
+                {
+                    b.HasOne("APIGerenciadorDePonto.Model.Empresa", null)
+                        .WithMany("Perfis")
+                        .HasForeignKey("EmpresaId");
+                });
+
             modelBuilder.Entity("APIGerenciadorDePonto.Model.Empresa", b =>
                 {
                     b.Navigation("Funcionarios");
+
+                    b.Navigation("Perfis");
                 });
 #pragma warning restore 612, 618
         }

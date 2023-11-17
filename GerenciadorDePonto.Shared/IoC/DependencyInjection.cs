@@ -24,13 +24,9 @@ namespace GerenciadorDePonto.Shared.IoC
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddScoped<IEmpresaService, EmpresaService>();
-
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddScoped(typeof(IServiceAsync<,>), typeof(ServiceAsync<,>));
-
-            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
 
             services.AddAutoMapper(typeof(DomainToDTOMapping).Assembly);
 

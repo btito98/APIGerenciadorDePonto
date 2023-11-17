@@ -9,6 +9,7 @@ namespace APIGerenciadorDePonto.Model
         public string CNPJ { get; set; }
         public string Email { get; set; }
         public virtual List<Funcionario> Funcionarios { get; set; }
+        public virtual List<Perfil> Perfis { get; set; }
 
     }
 }

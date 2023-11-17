@@ -3,14 +3,14 @@ using GrenciadorDePonto.Application.DTOs;
 using GrenciadorDePonto.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GernciadorDePontoAPI.Controllers
+namespace GerenciadorDePontoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class EmpresaController : ControllerBase
     {
-        private readonly IEmpresaService _empresaService;
-        public EmpresaController(IEmpresaService empresaService)
+        private readonly IServiceAsync<Empresa, EmpresaDTO> _empresaService;
+        public EmpresaController(IServiceAsync<Empresa, EmpresaDTO> empresaService)
         {
             _empresaService = empresaService;
         }
@@ -44,12 +44,12 @@ namespace GernciadorDePontoAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(Guid id)
+        [HttpGet("{empresaId}")]
+        public async Task<ActionResult> GetById([FromRoute] Guid empresaId)
         {
             try
             {
-                var empresa = await _empresaService.GetByIdAsync(id);
+                var empresa = await _empresaService.GetByIdAsync(empresaId);
                 if (empresa == null) return NotFound();
                 return Ok(empresa);
             }
@@ -59,12 +59,12 @@ namespace GernciadorDePontoAPI.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update(Guid id, [FromBody]EmpresaDTO empresaDTO)
+        [HttpPut("{empresaId}")]
+        public async Task<ActionResult> Update([FromRoute] Guid empresaId, [FromBody]EmpresaDTO empresaDTO)
         {
             try
             {
-                await _empresaService.UpdateAsync(id, empresaDTO);
+                await _empresaService.UpdateAsync(empresaId, empresaDTO);
                 return Ok("Empresa atualizada com sucesso");
             }
             catch (Exception ex)
@@ -73,12 +73,12 @@ namespace GernciadorDePontoAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(Guid id)
+        [HttpDelete("{empresaId}")]
+        public async Task<ActionResult> Delete(Guid empresaId)
         {
             try
             {
-                await _empresaService.DeleteAsync(id);
+                await _empresaService.DeleteAsync(empresaId);
                 return Ok("Empresa excluída com sucesso");
             }
             catch (Exception ex)

@@ -14,11 +14,9 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
     public class Repository<T> : IRepository<T> where T : Entity
     {
         protected AppDbContext _context;
-        protected DbSet<T> _table;
         public Repository(AppDbContext context)
         {
             _context = context;
-            _table = _context.Set<T>();
         }
 
         public async Task AddAsync(T entity)
@@ -38,7 +36,7 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
         {
             try
             {
-                _table.Remove(entity);
+                _context.Set<T>().Remove(entity);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -66,7 +64,7 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
         {
             try
             {
-                return await _table.FirstOrDefaultAsync(x => x.Id == id);
+                return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException("Element not found");
             }
             catch (Exception ex)
             {
@@ -78,7 +76,17 @@ namespace GerenciadorDePonto.Infrastructure.Repositories
         {
             try
             {
-                _table.Update(entity);
+                var existingEntity = await _context.Set<T>().FindAsync(id);
+
+                if (existingEntity != null)
+                {
+                    _context.Entry(existingEntity).CurrentValues.SetValues(entity);
+                }
+                else
+                {
+                    _context.Update(entity);
+                }
+
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
