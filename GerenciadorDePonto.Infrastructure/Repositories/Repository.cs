@@ -1,5 +1,5 @@
 ﻿using GerenciadorDePonto.Domain.Model;
-using GrenciadorDePonto.Application.Interfaces;
+using GerenciadorDePonto.Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using GrenciadorDePonto.Application.Interfaces;
 
 namespace GerenciadorDePonto.Infrastructure.Repositories
 {

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDePonto.Application\GerenciadorDePonto.Application.csproj" />
     <ProjectReference Include="..\GerenciadorDePonto.Domain\GerenciadorDePonto.Domain.csproj" />
     <ProjectReference Include="..\GrenciadorDePonto.Application\GerenciadorDePonto.Application.csproj" />
   </ItemGroup>

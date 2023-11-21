@@ -1,7 +1,9 @@
 ﻿using APIGerenciadorDePonto.Model;
-using GrenciadorDePonto.Application.DTOs;
+using GerenciadorDePonto.Application.DTOs;
+using GerenciadorDePonto.Application;
 using GrenciadorDePonto.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using GrenciadorDePonto.Application.DTOs;
 
 namespace GerenciadorDePontoAPI.Controllers
 {

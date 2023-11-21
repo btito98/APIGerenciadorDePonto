@@ -37,8 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDePonto.Application\GerenciadorDePonto.Application.csproj" />
     <ProjectReference Include="..\GerenciadorDePonto.Infrastructure\GerenciadorDePonto.Infrastructure.csproj" />
-    <ProjectReference Include="..\GerenciadorDePonto.Shared\GrenciadorDePonto.Shared.csproj" />
+    <ProjectReference Include="..\GerenciadorDePonto.Shared\GerenciadorDePonto.Shared.csproj" />
   </ItemGroup>
 
 </Project>

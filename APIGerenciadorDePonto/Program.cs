@@ -1,4 +1,5 @@
 using GerenciadorDePonto.Infrastructure;
+using GerenciadorDePonto.Shared;
 using GerenciadorDePonto.Shared.IoC;
 using Microsoft.EntityFrameworkCore;
 
