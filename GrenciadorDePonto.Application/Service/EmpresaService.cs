@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GrenciadorDePonto.Application.Service
 {    
-    public class EmpresaService : IServiceAsync<Empresa, EmpresaDTO>
+    public class EmpresaService : IService<Empresa, EmpresaDTO>
     {
         private IRepository<Empresa> _empresaRepository;
         private readonly IMapper _mapper;

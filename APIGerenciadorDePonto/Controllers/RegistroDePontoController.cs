@@ -10,8 +10,8 @@ namespace GrenciadorDePontoAPI.Controllers
     [ApiController]
     public class RegistroDePontoController : ControllerBase
     {
-        private readonly IServiceAsync<RegistroPonto, RegistroDePontoDto> _registroDePontoService;
-        public RegistroDePontoController(IServiceAsync<RegistroPonto, RegistroDePontoDto> registroDePontoService)
+        private readonly IService<RegistroPonto, RegistroDePontoDto> _registroDePontoService;
+        public RegistroDePontoController(IService<RegistroPonto, RegistroDePontoDto> registroDePontoService)
         {
             _registroDePontoService = registroDePontoService;
         }

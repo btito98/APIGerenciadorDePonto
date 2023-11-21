@@ -9,8 +9,8 @@ namespace GerenciadorDePontoAPI.Controllers
     [ApiController]
     public class EmpresaController : ControllerBase
     {
-        private readonly IServiceAsync<Empresa, EmpresaDTO> _empresaService;
-        public EmpresaController(IServiceAsync<Empresa, EmpresaDTO> empresaService)
+        private readonly IService<Empresa, EmpresaDTO> _empresaService;
+        public EmpresaController(IService<Empresa, EmpresaDTO> empresaService)
         {
             _empresaService = empresaService;
         }

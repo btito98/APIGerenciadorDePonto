@@ -26,7 +26,7 @@ namespace GerenciadorDePonto.Shared.IoC
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-            services.AddScoped(typeof(IServiceAsync<,>), typeof(ServiceAsync<,>));
+            services.AddScoped(typeof(IService<,>), typeof(Service<,>));
 
             services.AddAutoMapper(typeof(DomainToDTOMapping).Assembly);
 

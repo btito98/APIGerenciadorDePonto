@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GrenciadorDePonto.Application.Interfaces
 {
-    public interface IServiceAsync<TEntity, TDto>
+    public interface IService<TEntity, TDto>
     {
         IEnumerable<TDto> GetAll(Expression<Func<TDto, bool>> expression = null);
         Task<TDto> GetByIdAsync(Guid? id);

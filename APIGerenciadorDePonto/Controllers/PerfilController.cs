@@ -9,8 +9,8 @@ namespace GrenciadorDePontoAPI.Controllers
     [ApiController]
     public class PerfilController : ControllerBase
     {
-        private readonly IServiceAsync<Perfil, PerfilDto> _perfilService;
-        public PerfilController(IServiceAsync<Perfil, PerfilDto> perfilService)
+        private readonly IService<Perfil, PerfilDto> _perfilService;
+        public PerfilController(IService<Perfil, PerfilDto> perfilService)
         {
             _perfilService = perfilService;
         }

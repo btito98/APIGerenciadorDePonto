@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDePonto.Infrastructure.Repositories
 {
-    public class ServiceAsync<TEntity, TDto> : IServiceAsync<TEntity, TDto>
+    public class Service<TEntity, TDto> : IService<TEntity, TDto>
         where TDto : EntityDto where TEntity : Entity
     {
         private readonly IRepository<TEntity> _repository;
         private readonly IMapper _mapper;
 
-        public ServiceAsync(IRepository<TEntity> repository, IMapper mapper)
+        public Service(IRepository<TEntity> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

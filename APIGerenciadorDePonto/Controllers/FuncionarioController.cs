@@ -9,8 +9,8 @@ namespace GerenciadorDePontoAPI.Controllers
     [ApiController]
     public class FuncionarioController : ControllerBase
     {
-        private readonly IServiceAsync<Funcionario, FuncionarioDTO> _funcionarioService;
-        public FuncionarioController(IServiceAsync<Funcionario, FuncionarioDTO> funcionarioService)
+        private readonly IService<Funcionario, FuncionarioDTO> _funcionarioService;
+        public FuncionarioController(IService<Funcionario, FuncionarioDTO> funcionarioService)
         {
             _funcionarioService = funcionarioService;
         }
