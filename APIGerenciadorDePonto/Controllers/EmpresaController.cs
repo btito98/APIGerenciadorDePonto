@@ -35,6 +35,7 @@ namespace GerenciadorDePontoAPI.Controllers
         {
             try
             {
+                empresaDTO.Email = empresaDTO.Email.ToLower();
                 await _empresaService.AddAsync(empresaDTO);
                 return Ok("Empresa cadastrada com sucesso");
             }
