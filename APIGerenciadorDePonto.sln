@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGerenciadorDePonto", "APIGerenciadorDePonto\APIGerenciadorDePonto.csproj", "{D9AB73FA-06A0-4B8D-BE3F-A9321B8B036C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrenciadorDePontoAPI", "APIGerenciadorDePonto\GrenciadorDePontoAPI.csproj", "{D9AB73FA-06A0-4B8D-BE3F-A9321B8B036C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDePonto.Infrastructure", "GerenciadorDePonto.Infrastructure\GerenciadorDePonto.Infrastructure.csproj", "{11DCA751-4DDA-4FB3-9038-63E64110D0D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDePonto.Domain", "GerenciadorDePonto.Domain\GerenciadorDePonto.Domain.csproj", "{4D8273AA-6517-47D4-8BA0-5616470BA367}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrenciadorDePonto.Shared", "GerenciadorDePonto.Shared\GrenciadorDePonto.Shared.csproj", "{61B42F89-C8E6-4079-A823-026859C25366}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDePonto.Application", "GrenciadorDePonto.Application\GerenciadorDePonto.Application.csproj", "{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{D9AB73FA-06A0-4B8D-BE3F-A9321B8B036C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AB73FA-06A0-4B8D-BE3F-A9321B8B036C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9AB73FA-06A0-4B8D-BE3F-A9321B8B036C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DCA751-4DDA-4FB3-9038-63E64110D0D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DCA751-4DDA-4FB3-9038-63E64110D0D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DCA751-4DDA-4FB3-9038-63E64110D0D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DCA751-4DDA-4FB3-9038-63E64110D0D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8273AA-6517-47D4-8BA0-5616470BA367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8273AA-6517-47D4-8BA0-5616470BA367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8273AA-6517-47D4-8BA0-5616470BA367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8273AA-6517-47D4-8BA0-5616470BA367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B42F89-C8E6-4079-A823-026859C25366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B42F89-C8E6-4079-A823-026859C25366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B42F89-C8E6-4079-A823-026859C25366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B42F89-C8E6-4079-A823-026859C25366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9281DBA-667A-4BC2-BFD2-DA31EF22EBF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
